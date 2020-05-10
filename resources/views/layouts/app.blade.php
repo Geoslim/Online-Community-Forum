@@ -44,11 +44,15 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="{{ url('/') }}"><img src="" alt="LOGO"></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('dashboard-assets/images/icon/logo.png')}}" alt="LOGO"></a>
                         </div>
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-9 clearfix text-right">
+                        
+                        @guest
+
+                        @else
                         <div class="d-md-inline-block d-block mr-md-4">
                             <ul class="notification-area">
                                 <li id="full-view"><i class="ti-fullscreen"></i></li>
@@ -74,34 +78,7 @@
                                                     <span>30 Seconds ago</span>
                                                 </div>
                                             </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                                <div class="notify-text">
-                                                    <p>Some special like you</p>
-                                                    <span>Just Now</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                                <div class="notify-text">
-                                                    <p>New Commetns On Post</p>
-                                                    <span>30 Seconds ago</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                                <div class="notify-text">
-                                                    <p>Some special like you</p>
-                                                    <span>Just Now</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                                <div class="notify-text">
-                                                    <p>You have Changed Your Password</p>
-                                                    <span>Just Now</span>
-                                                </div>
-                                            </a>
+                                        
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
                                                 <div class="notify-text">
@@ -115,58 +92,9 @@
                                 <li class="dropdown">
                                     <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>3</span></i>
                                     <div class="dropdown-menu notify-box nt-enveloper-box">
-                                        <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
+                                        <span class="notify-title">You have 2 new notifications <a href="#">view all</a></span>
                                         <div class="nofity-list">
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb">
-                                                    <img src="{{ asset('dashboard-assets/images/author/author-img1.jpg')}}" alt="image">
-                                                </div>
-                                                <div class="notify-text">
-                                                    <p>Aglae Mayer</p>
-                                                    <span class="msg">Hey I am waiting for you...</span>
-                                                    <span>3:15 PM</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb">
-                                                    <img src="{{ asset('dashboard-assets/images/author/author-img2.jpg')}}" alt="image">
-                                                </div>
-                                                <div class="notify-text">
-                                                    <p>Aglae Mayer</p>
-                                                    <span class="msg">When you can connect with me...</span>
-                                                    <span>3:15 PM</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb">
-                                                    <img src="{{ asset('dashboard-assets/images/author/author-img3.jpg')}}" alt="image">
-                                                </div>
-                                                <div class="notify-text">
-                                                    <p>Aglae Mayer</p>
-                                                    <span class="msg">I missed you so much...</span>
-                                                    <span>3:15 PM</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb">
-                                                    <img src="{{ asset('dashboard-assets/images/author/author-img4.jpg')}}" alt="image">
-                                                </div>
-                                                <div class="notify-text">
-                                                    <p>Aglae Mayer</p>
-                                                    <span class="msg">Your product is completely Ready...</span>
-                                                    <span>3:15 PM</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="notify-item">
-                                                <div class="notify-thumb">
-                                                    <img src="{{ asset('dashboard-assets/images/author/author-img2.jpg')}}" alt="image">
-                                                </div>
-                                                <div class="notify-text">
-                                                    <p>Aglae Mayer</p>
-                                                    <span class="msg">Hey I am waiting for you...</span>
-                                                    <span>3:15 PM</span>
-                                                </div>
-                                            </a>
+                                          
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
                                                     <img src="{{ asset('dashboard-assets/images/author/author-img1.jpg')}}" alt="image">
@@ -193,9 +121,6 @@
                              
                             </ul>
                         </div>
-                        @guest
-
-                        @else
                         <div class="clearfix d-md-inline-block d-block">
                             <div class="user-profile m-0">
                                 <img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.Auth()->user()->avatar)}}" alt="avatar">
@@ -222,21 +147,21 @@
         <div class="header-area header-bottom">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-9  d-none d-lg-block">
+                    <div class="col-lg-9 d-none d-lg-block">
                         <div class="horizontal-menu">
                             <nav>
                                 <ul id="nav_menu">
                                    
                                     <li><a href="{{ url('/') }}"><i class="ti-home"></i> <span>Forum</span></a></li>
 
-                                    <li>
+                                    {{-- <li>
                                         <a href="javascript:void(0)"><i class="ti-pie-chart"></i><span>Charts</span></a>
                                         <ul class="submenu">
                                             <li><a href="">bar chart</a></li>
                                             <li><a href="">line Chart</a></li>
                                             <li><a href="">pie chart</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                  
                                     @guest
                                         <li><a href="{{ route('login') }}"><i class="ti-map-alt"></i> <span>My Account</span></a></li>

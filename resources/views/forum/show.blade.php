@@ -92,14 +92,23 @@
                                     <div class="row">
                                         <img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$reply->user->avatar)}}" alt="avatar">
                                         <p class="col-md-9">{{ $reply->user->name }} ({{ $reply->user->xp_points }} Xps)| <em>{{ $reply->created_at->diffForHumans() }}</em></p> 
-                                        @if ($discussion->user->id == Auth()->user()->id)
+                                        @guest
                                             @if ($reply->best_answer == 0)
-                                                <a href="{{ route('reply.best', $reply->id) }}" class="btn btn-xs btn-flat btn-dark col-md-2"><i class="ti-check"></i>Mark as best answer</a>      
+                                                 
 
                                             @else
-                                                <a href="{{ route('reply.unbest', $reply->id) }}" class="btn btn-xs btn-flat btn-success col-md-2"><i class="ti-check"></i>Marked as best answer</a>      
+                                                <span ><i class="ti-check"></i> Marked as best answer</span>      
                                             @endif
-                                        @endif
+                                        @else
+                                            @if ($discussion->user->id == Auth()->user()->id)
+                                                @if ($reply->best_answer == 0)
+                                                    <a href="{{ route('reply.best', $reply->id) }}" class="btn btn-xs btn-flat btn-dark col-md-2"><i class="ti-check"></i>Mark as best answer</a>      
+
+                                                @else
+                                                    <a href="{{ route('reply.unbest', $reply->id) }}" class="btn btn-xs btn-flat btn-success col-md-2"><i class="ti-check"></i>Marked as best answer</a>      
+                                                @endif
+                                            @endif
+                                        @endguest
 
 
                                     </div>
@@ -133,34 +142,34 @@
                             @endforeach
 
                             <div class="card mb-1 mt-5">
-                                <div class="card-header bg-white"> 
-                                    <p class="">Leave a comment</p>       
-                                </div>
-                                <div class="card-body">
-                                    @if (Auth()->check())
-                                    <form action="{{ route('discussion.reply') }}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="discussion_id" value="{{ $discussion->id}}">
-                                        <div class="form-group">
-                                             <label for="comment" class="col-form-label">Comment</label>
-                                             <textarea  id="comment" class="form-control" name="comment"></textarea>
-                                         </div>
- 
-                                         <div class="form-group">
-                                             <button type="submit" class="btn btn-primary">Submit</button>   
-                                         </div>
-                                    </form>
-                                    @else
-                                    <p class=""><a href="{{ route('login') }}">Sign In </a>to leave a Comment</p>       
-                                    @endif
-                                 
-                                   
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                       
+                                @if ($discussion->has_best_answer())
+                                    <span class="col-md-12 text-lg-center p-5">Discussion has been closed by Author.</span>
+                                @else
+                                    <div class="card-header bg-white"> 
+                                        <p class="">Leave a comment</p>       
                                     </div>
-                                </div>
+                                    <div class="card-body">
+                                        @if (Auth()->check())
+                                        <form action="{{ route('discussion.reply') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="discussion_id" value="{{ $discussion->id}}">
+                                            <div class="form-group">
+                                                <label for="comment" class="col-form-label">Comment</label>
+                                                <textarea  id="comment" class="form-control" name="comment"></textarea>
+                                            </div>
+    
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Submit</button>   
+                                            </div>
+                                        </form>
+                                        @else
+                                        <p class=""><a href="{{ route('login') }}">Sign In </a>to leave a Comment</p>       
+                                        @endif
+                                    
+                                    
+                                    </div>
+                                @endif
+                               
                             </div>
                     </div>
                     <!-- discussions area end -->
