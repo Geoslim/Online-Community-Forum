@@ -3,23 +3,8 @@
 @section('content')
                 <!--  report area start -->
                 <div class="sales-report-area mt-5 mb-5">
+                   
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="single-report mb-xs-30">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-user"></i></div>
-                                    <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Members</h4>
-                                        {{-- <p>24 H</p> --}}
-                                    </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2></h2>
-                                        <h2>{{ count($users) }}</h2>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
@@ -41,12 +26,28 @@
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-comment"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Discussions</h4>
+                                        <h4 class="header-title mb-0">My Discussions</h4>
                                         {{-- <p>24 H</p> --}}
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
                                         <h2></h2>
-                                        <h2>{{ count($discussions) }}</h2>
+                                        <h2>{{ count($my_discussions) }}</h2>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="single-report">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-comments"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">My Replies</h4>
+                                        {{-- <p>24 H</p> --}}
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2></h2>
+                                        <h2>{{ count($my_replies) }}</h2>
                                     </div>
                                 </div>
                                 
@@ -57,34 +58,19 @@
                 </div>
 
                 <div class="sales-report-area mt-5 mb-5">
+                   
                     <div class="row">
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="icon"><i class="fa fa-trophy"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Watchers</h4>
-                                        {{-- <p>24 H</p> --}}
-                                    </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2></h2>
-                                        <h2>{{ count($watchers) }}</h2>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="single-report mb-xs-30">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                                    <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Likes</h4>
+                                        <h4 class="header-title mb-0">My Points</h4>
                                         {{-- <p></p> --}}
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
                                         <h2></h2>
-                                        <h2>{{ count($likes) }}</h2>
+                                        <h2>{{ $user->xp_points}}</h2>
                                     </div>
                                 </div>
                                
@@ -93,14 +79,30 @@
                         <div class="col-md-4">
                             <div class="single-report">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-comments"></i></div>
+                                    <div class="icon"><i class="fa fa-thumbs-up"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Replies</h4>
+                                        <h4 class="header-title mb-0">Discussions Watched</h4>
                                         {{-- <p>24 H</p> --}}
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
                                         <h2></h2>
-                                        <h2>{{ count($replies) }}</h2>
+                                        <h2>{{ count($watching) }}</h2>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="single-report">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-thumbs-up"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">My Likes</h4>
+                                        {{-- <p>24 H</p> --}}
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2></h2>
+                                        <h2>{{ count($my_likes) }}</h2>
                                     </div>
                                 </div>
                                 
@@ -109,34 +111,8 @@
                         
                     </div>
                 </div>
-                <!--  report area end -->
-                <!-- overview area start -->
-                {{-- <div class="row">
-                    <div class="col-xl-9 col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Overview</h4>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
-                                    </select>
-                                </div>
-                                <div id="verview-shart"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 coin-distribution">
-                        <div class="card h-full">
-                            <div class="card-body">
-                                <h4 class="header-title mb-0">Coin Distribution</h4>
-                                <div id="coin_distribution"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                <!-- overview area end -->
-                <!-- market value area start -->
+
+              
                 <div class="row mt-5 mb-5">
                     <div class="col-12">
                         <div class="card">
@@ -152,24 +128,18 @@
                                                 <td class="buy">Points</td>
                                                 <td class="mv-icon">Avatar</td>
                                                 <td class="coin-name">Name</td>
-                                                <td class="coin-name">Email</td>
-                                                <td class="coin-name">Discussions</td>
-                                                <td class="coin-name">Replies</td>
                                                
                                                
                                             </tr>
-                                            @foreach ($xp_users as $xp_user)
+                                          
                                                 <tr>
                                                     
-                                                    <td class="attachments">{{ $xp_user->xp_points }}</td>
-                                                    <td class="mv-icon"><img src="{{ asset('dashboard-assets/images/author/'.$xp_user->avatar)}}" alt="icon"></td>
-                                                    <td class="coin-name">{{ $xp_user->name }}</td>
-                                                    <td class="coin-name">{{ $xp_user->email }}</td>
-                                                    <td class="coin-name">{{ $xp_user->discussions->count() }}</td>
-                                                    <td class="coin-name">{{ $xp_user->replies->count() }}</td>
+                                                    <td class="attachments"></td>
+                                                    <td class="mv-icon"><img src="" alt="icon"></td>
+                                                    <td class="coin-name"></td>
                                                 
                                                 </tr>
-                                            @endforeach
+                                           
                                           
                                             <tr>
                                                 <td class="mv-icon">

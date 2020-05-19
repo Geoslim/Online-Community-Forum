@@ -36,17 +36,18 @@
                             <a href="{{ route('forum.show', $discussion->slug) }}" class="btn btn-xs btn-flat btn-dark col-md-1">View</a>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            {{ Str::limit($discussion->content, 50) }} | 
-                            <small><em>asked by <img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$discussion->user->avatar)}}" alt="avatar">
-                                 {{ $discussion->user->name }} ({{ $discussion->user->xp_points }} Xps) . - {{ $discussion->created_at->diffForHumans() }}</em></small>
+                    <div class="card-body p-0">
+                        <p class="card-text pl-3 pt-1"">
+                            {{ Str::limit($discussion->content, 70) }}
+                            
                         </p>
-                       
+                       <hr/>
+                       <small class="float-right pr-1 pb-1"><em><img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$discussion->user->avatar)}}" alt="avatar">
+                        {{ $discussion->user->name }} ({{ $discussion->user->xp_points }} Xps) . - {{ $discussion->created_at->diffForHumans() }}</em></small>
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <span class="col-md-2">Replies: {{ $discussion->replies->count() }} </span>
+                            <span class="badge badge-light">Replies: {{ $discussion->replies->count() }} </span>
                             
                         </div>
                     </div>

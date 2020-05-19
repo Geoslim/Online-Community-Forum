@@ -52,23 +52,23 @@
                                     </div>
                                 
                                 </div>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        {{ $discussion->content }} | <small><em>asked by  <img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$discussion->user->avatar)}}" alt="avatar">
-                                            {{ $discussion->user->name }} ({{ $discussion->user->xp_points }} Xps). - {{ $discussion->created_at->diffForHumans() }}</em></small>
+                                <div class="card-body p-0">
+                                    <p class="card-text pl-3 pt-1">
+                                        {{ $discussion->content }} 
                                     </p>
+                                    
                                     @if ($best_answer)
                                         <div class="card bg-success ">
-                                            <div class="card-header">
-                                                <div class="row">
-                                                    <p class="col-md-10 text-white">
+                                            <div class="card-header p-1" >
+                                                <div class="row ">
+                                                    <p class="col-md-10 text-white ">
                                                         <img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$best_answer->user->avatar)}}" alt="avatar">
                                                         {{ $best_answer->user->name }} ({{ $best_answer->user->xp_points }} Xps) | <em>{{ $best_answer->created_at->diffForHumans() }}</em></p> 
-                                                    <span class="text-white"><i class="ti-check"></i>Marked as best answer</span>  
+                                                    <span class="text-white"><i class="ti-check"></i> Marked as best answer</span>  
                                                 </div>
                                             </div>
-                                            <div class="card-body">
-                                                <p class="card-text text-white">
+                                            <div class="card-body p-0">
+                                                <p class="card-text text-white pl-3 pt-1">
                                                     <em>{{ $best_answer->content }} </em>
                                                 </p>
                                             
@@ -76,11 +76,13 @@
                                         
                                         </div>
                                     @endif
-                                   
+                                   <hr/>
+                                   <small class="float-right pr-1 pb-1"><em><img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$discussion->user->avatar)}}" alt="avatar">
+                                    {{ $discussion->user->name }} ({{ $discussion->user->xp_points }} Xps) . - {{ $discussion->created_at->diffForHumans() }}</em></small>
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
-                                        <span class="col-md-2">Replies: {{ $discussion->replies->count() }} </span>
+                                        <span class="badge badge-light">Replies: {{ $discussion->replies->count() }} </span>
                                         
                                     </div>
                                 </div>
@@ -88,10 +90,11 @@
 
                             @foreach ($discussion->replies as $reply)
                             <div class="card mb-1">
-                                <div class="card-header bg-white">
+                                <div class="card-header bg-white p-1">
                                     <div class="row">
-                                        <img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$reply->user->avatar)}}" alt="avatar">
-                                        <p class="col-md-9">{{ $reply->user->name }} ({{ $reply->user->xp_points }} Xps)| <em>{{ $reply->created_at->diffForHumans() }}</em></p> 
+                                        
+                                        <p class="col-md-9">   <img class="avatar user-thumb" src="{{ asset('dashboard-assets/images/author/'.$reply->user->avatar)}}" alt="avatar">
+                                            {{ $reply->user->name }} ({{ $reply->user->xp_points }} Xps)| <em>{{ $reply->created_at->diffForHumans() }}</em></p> 
                                         @guest
                                             @if ($reply->best_answer == 0)
                                                  
@@ -102,10 +105,10 @@
                                         @else
                                             @if ($discussion->user->id == Auth()->user()->id)
                                                 @if ($reply->best_answer == 0)
-                                                    <a href="{{ route('reply.best', $reply->id) }}" class="btn btn-xs btn-flat btn-dark col-md-2"><i class="ti-check"></i>Mark as best answer</a>      
+                                                    <a href="{{ route('reply.best', $reply->id) }}" class="btn btn-xs btn-flat btn-dark col-md-2"><i class="ti-check"></i> Mark as best answer</a>      
 
                                                 @else
-                                                    <a href="{{ route('reply.unbest', $reply->id) }}" class="btn btn-xs btn-flat btn-success col-md-2"><i class="ti-check"></i>Marked as best answer</a>      
+                                                    <a href="{{ route('reply.unbest', $reply->id) }}" class="btn btn-xs btn-flat btn-success col-md-2"><i class="ti-check"></i> Marked as best answer</a>      
                                                 @endif
                                             @endif
                                         @endguest
@@ -113,8 +116,8 @@
 
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <p class="card-text">
+                                <div class="card-body p-0">
+                                    <p class="card-text pl-3 pt-1">
                                         {{ $reply->content }} 
                                     </p>
                                    

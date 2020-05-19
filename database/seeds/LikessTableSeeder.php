@@ -80,5 +80,11 @@ class LikessTableSeeder extends Seeder
             'reply_id' => 9,
             'user_id' => 3
         ]);
+
+        
+        App\Like::create([
+            'reply_id' => 8,
+            'user_id' => 2
+        ]);
     }
 }

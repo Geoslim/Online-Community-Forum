@@ -82,5 +82,17 @@ class RepliesTableSeeder extends Seeder
             'discussion_id' => 4,
             'content' => 'increased productivity and revenue for businesses that choose to work with us. ',
         ]);
+
+        App\Reply::create([
+            'user_id' => 3,
+            'discussion_id' => 7,
+            'content' => 'Since Flutter is a multi-platform SDK, each FlutterFire plugin is applicable for both iOS and Android.',
+        ]);
+
+        App\Reply::create([
+            'user_id' => 1,
+            'discussion_id' => 8,
+            'content' => 'FlutterFire plugin to your Flutter app, it will be used by both the iOS and Android versions of your Firebase app.',
+        ]);
     }
 }

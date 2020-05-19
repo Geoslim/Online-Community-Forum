@@ -14,7 +14,7 @@ class ChannelsTableSeeder extends Seeder
 
         $title1 = 'VueJs';
         $title2 = 'Laravel';
-        $title3 = 'ReactJs';
+        $title3 = 'Flutter';
         $title4 = 'MySQLi';
         $title5 = 'PHP';
         $title6 = 'HTML5';

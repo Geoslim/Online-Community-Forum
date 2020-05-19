@@ -22,7 +22,9 @@ Route::get('/login/{provider}/callback', 'Auth\SocialAccountController@handlePro
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('dashboard', 'DashboardController@index');
+
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard.admin');
+    Route::get('dashboard/user', 'DashboardController@user')->name('dashboard.user');
     Route::resource('channels', 'ChannelsController');
     Route::resource('discussions', 'DiscussionsController');
 

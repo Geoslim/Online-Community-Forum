@@ -57,6 +57,7 @@
                                                     <th scope="col">Title</th>
                                                     <th scope="col">Question</th>
                                                     <th scope="col">Channel</th>
+                                                    <th scope="col">Replies</th>
                                                     <th scope="col">status</th>
                                                     <th scope="col">action</th>
                                                 </tr>
@@ -69,6 +70,7 @@
                                                     <td>{{ $discussion->title }}</td>
                                                     <td>{{ $discussion->content }}</td>
                                                     <td>{{ $discussion->channel->title }} </td>
+                                                    <td>{{ $discussion->replies->count() }}</td>
                                                     <td><span class="status-p bg-primary">pending</span></td>
                                                     <td>
                                                         <ul class="d-flex justify-content-center">

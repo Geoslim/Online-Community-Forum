@@ -164,9 +164,9 @@
                                     </li> --}}
                                  
                                     @guest
-                                        <li><a href="{{ route('login') }}"><i class="ti-map-alt"></i> <span>My Account</span></a></li>
+                                        <li><a href="{{ route('login') }}"><i class="ti-user"></i> <span>My Account</span></a></li>
                                     @else
-                                        <li><a href="dashboard"><i class="ti-map-alt"></i> <span>Dashboard</span></a></li>
+                                        <li><a href="dashboard"><i class="ti-dashboard"></i> <span>Dashboard</span></a></li>
                                     @endguest
                                 </ul>
                             </nav>

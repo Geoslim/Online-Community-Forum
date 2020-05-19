@@ -111,6 +111,15 @@ class DiscussionsTableSeeder extends Seeder
         ]);
 
         App\Discussion::create([
+            'title' => ' Realtime Database Storage',
+            'slug' => Str::slug(' Realtime Database Storage'),
+            'channel_id' => 6,
+            'content' => 'Firebase is accessed through a number of different libraries, one for each Firebase product (for example: Realtime Database, Authentication, Analytics, or Storage). Flutter provides a set of Firebase plugins, which are collectively called FlutterFire.',
+            'user_id' => 2
+
+        ]);
+
+        App\Discussion::create([
             'title' => 'Branding Techniques',
             'slug' => Str::slug('Branding Techniques'),
             'channel_id' => 8,
@@ -127,6 +136,7 @@ class DiscussionsTableSeeder extends Seeder
             'user_id' => 1
 
         ]);
+        
     }
 }
 
